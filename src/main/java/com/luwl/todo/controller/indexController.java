@@ -1,4 +1,4 @@
-package com.luwl.todo;
+package com.luwl.todo.controller;
 
 
 import org.springframework.stereotype.Controller;
