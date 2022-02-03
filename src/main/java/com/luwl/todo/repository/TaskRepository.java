@@ -1,5 +1,6 @@
-package com.luwl.todo.model;
+package com.luwl.todo.repository;
 
+import com.luwl.todo.model.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

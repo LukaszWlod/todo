@@ -3,13 +3,12 @@ package com.luwl.todo.controller;
 
 import com.luwl.todo.TaskFormData;
 import com.luwl.todo.model.Task;
-import com.luwl.todo.model.TaskRepository;
+import com.luwl.todo.repository.TaskRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
