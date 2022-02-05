@@ -26,10 +26,9 @@ public class TaskServiceImpl implements TaskService{
        return taskRepository.findAll();
 
     }
-
     @Override
-    public void safeTask() {
-
+    public void saveTask(Task task) {
+        taskRepository.save(task);
     }
 
     @Override
@@ -65,4 +64,11 @@ public class TaskServiceImpl implements TaskService{
     public Long getAmountOfTasks(){
       return   taskRepository.count();
     }
+
+
+    public int getNumberOfActiveTask(){
+       return taskRepository.countAllByCompleted(true);
+    }
+
+
 }
