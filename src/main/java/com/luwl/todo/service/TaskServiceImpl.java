@@ -1,5 +1,6 @@
 package com.luwl.todo.service;
 
+import com.luwl.todo.TaskFilter;
 import com.luwl.todo.model.Task;
 import com.luwl.todo.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +21,7 @@ public class TaskServiceImpl implements TaskService{
         this.taskRepository = taskRepository;
     }
 
-    @Override
-    public List<Task> getTasks() {
 
-       return taskRepository.findAll();
-
-    }
     @Override
     public void saveTask(Task task) {
         taskRepository.save(task);
@@ -66,8 +62,22 @@ public class TaskServiceImpl implements TaskService{
     }
 
 
-    public int getNumberOfActiveTask(){
-       return taskRepository.countAllByCompleted(true);
+    public int getNumberOfActiveTasks(){
+       return taskRepository.countAllByCompleted(false);
+    }
+
+
+    public int getNumberOfCompletedTasks() {
+        return taskRepository.countAllByCompleted(true);
+    }
+
+    @Override
+    public List<Task> getTasks(TaskFilter filter) {
+        return switch (filter) {
+            case ALL -> taskRepository.findAll();
+            case ACTIVE -> taskRepository.findAllByCompleted(false);
+            case COMPLETED -> taskRepository.findAllByCompleted(true);
+        };
     }
 
 

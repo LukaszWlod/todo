@@ -70,18 +70,23 @@
         <!-- Remove this if you don't implement routing -->
         <ul class="filters">
             <li>
-                <a class="selected" href="#/">All</a>
+                <a th:href="@{/}"
+                   th:classappend="${filter.name() == 'ALL'?'selected':''}">All</a>
             </li>
             <li>
-                <a href="#/active">Active</a>
+                <a th:href="@{/active}"
+                   th:classappend="${filter.name() == 'ACTIVE'?'selected':''}">Active</a>
             </li>
             <li>
-                <a href="#/completed">Completed</a>
+                <a th:href="@{/completed}"
+                   th:classappend="${filter.name() == 'COMPLETED'?'selected':''}">Completed</a>
             </li>
         </ul>
         <!-- Hidden if no completed items are left ↓ -->
-        <button class="clear-completed">Clear completed</button>
-    </footer>
+        <form th:action="@{/completed}" th:method="delete"
+              th:if="${numberOfCompletedItems > 0}">
+            <button class="clear-completed">Clear completed</button>
+        </form>
 </section>
 <footer class="info">
     <p>Double-click to edit a todo</p>
