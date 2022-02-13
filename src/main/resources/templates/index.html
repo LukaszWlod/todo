@@ -5,10 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Template • TodoMVC</title>
+    <title>Todo</title>
 
-    <link rel="stylesheet" th:href="@{/webjars/todomvc-common/base.css}">
-    <link rel="stylesheet" th:href="@{/webjars/todomvc-app-css/index.css}">
+    <script th:include="fragments/header :: headerScripts" th:remove="tag"></script>
 </head>
 <body>
 <section class="todoapp">
@@ -58,6 +57,7 @@
             </li>
         </ul>
     </section>
+
     <!-- This footer should be hidden by default and shown when there are todos -->
     <footer class="footer" th:if="${numberOfTask > 0}">
         <!-- This should be `0 items left` by default -->
@@ -87,9 +87,10 @@
               th:if="${numberOfCompletedItems > 0}">
             <button class="clear-completed">Clear completed</button>
         </form>
+    </footer>
 </section>
 <footer class="info">
-    <p>Created by Lukasz Włodarczyk</a></p>
+    <p>Created by Łukasz Włodarczyk</a></p>
 </footer>
 
 </body>
